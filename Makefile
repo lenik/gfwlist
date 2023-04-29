@@ -1,11 +1,11 @@
+all: list.txt
 
-all: gfwlist
+list.base64: gfwlist.txt
+	cp -f $< $@
 
-#gfwlist.base64: gfwlist.txt
-#	base64 $< >$@
-
-gfwlist: gfwlist.base64
+list.txt: list.base64
 	base64 -d $< >$@
 
 clean: 
+	list.txt
 
